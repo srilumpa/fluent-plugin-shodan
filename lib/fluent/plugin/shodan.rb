@@ -17,6 +17,11 @@ module Fluent::Plugin
       super
 
       @client = Shodanz.client.new(key: @api_key)
+      begin
+        log.info "Shodan client properly registered", client_info: @client.info
+      rescue RuntimeError => exception
+        raise Fluent::ConfigError.new "Invalid Shodan API key"
+      end
     end
 
     def multi_workers_ready?
