@@ -5,6 +5,7 @@ module Fluent::Plugin
   class ShodanSearch < ShodanGenericInput
     Fluent::Plugin.register_input('shodan_search', self)
 
+    desc "The Shodan query to execute"
     config_param :query, :string
 
     private
