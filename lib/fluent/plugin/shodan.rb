@@ -7,7 +7,7 @@ module Fluent::Plugin
     helpers :timer
 
     desc "The API key to connect to the Shodan API"
-    config_param :api_key, :string
+    config_param :api_key, :string, secret: true
     desc "The interval time between running queries"
     config_param :interval, :time, default: 3600
     desc "The tag to apply to each shodan entries"
