@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.date = Time.new.strftime('%Y-%m-%d')
   s.email = 'marcandre.doll@gmail.com'
   s.license = 'Apache-2.0'
-  s.homepage = ''
+  s.homepage = 'https://github.com/srilumpa/fluent-plugin-shodan'
   s.summary = 'Fluentd plugin to extract data from Shodan'
 
   s.extra_rdoc_files = [
