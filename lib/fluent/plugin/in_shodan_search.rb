@@ -19,9 +19,9 @@ module Fluent::Plugin
       end
       router.emit_stream(@tag, es)
     rescue RuntimeError => re
+      log.error "Unable to execute Shodan query", query: @query, page: current_page, error: re
     rescue => exception
       log.error "Error executing Shodan query", error: exception
-      router.emit_error_event(@tag, Fluent::EventTime.now, {}, exception)
     end
   end
 end
