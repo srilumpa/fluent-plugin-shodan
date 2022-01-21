@@ -23,7 +23,6 @@ Gem::Specification.new do |s|
   s.files = [
     'AUTHORS',
     'VERSION',
-    'lib/fluent/plugin/shodan.rb',
     'lib/fluent/plugin/in_shodan_search.rb'
   ]
   s.test_files = []
