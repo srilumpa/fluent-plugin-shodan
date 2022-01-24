@@ -98,6 +98,24 @@ WIP
 
 WIP
 
+## Testing
+
+### Unit tests
+
+1. Clone this repository
+2. Install all dependencies with `bundle install`
+3. Set the `SHODAN_TEST_API_KEY` environment variable with your API key
+4. Run `rake` or `rake test`
+
+### Live tests
+
+On a system where fluentd is installed
+
+1. Clone this repository
+2. Build the gem with `gem build fluent-plugin-shodan.gemspec`
+3. Install the built gem with `fluent-gem install fluent-plugin-shodan-<version>.gem`
+4. Follow the [debugging guide from FluentD](https://docs.fluentd.org/plugin-development#debugging-plugins)
+
 ## Copyright
 
 * Copyright(c) 2022 Marc-André Doll
