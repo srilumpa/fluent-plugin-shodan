@@ -5,9 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |s|
   s.name = 'fluent-plugin-shodan'
-  versionFile = File.open('VERSION')
-  s.version = versionFile.readlines[0].chomp()
-  versionFile.close()
+  s.version = '0.0.1'
 
   s.required_rubygems_version = Gem::Specification.new('>=0') if s.respond_to? :required_rubygems_version=
   s.authors = ['srilumpa']
