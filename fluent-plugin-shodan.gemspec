@@ -25,7 +25,9 @@ Gem::Specification.new do |s|
     'VERSION',
     'lib/fluent/plugin/in_shodan_search.rb'
   ]
-  s.test_files = []
+  s.test_files = [
+    'test/test_in_shodan_search.rb'
+  ]
   s.require_paths = ['lib']
 
   if s.respond_to? :specification_version
