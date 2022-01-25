@@ -29,4 +29,6 @@ jobs:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Run tests
+      env:
+        SHODAN_TEST_API_KEY: ${{ secrets.SHODAN_API_KEY }}
       run: bundle exec rake
