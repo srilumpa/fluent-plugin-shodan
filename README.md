@@ -1,5 +1,7 @@
 # fluent-plugin-shodan
 
+[![Unit tests](https://github.com/srilumpa/fluent-plugin-shodan/actions/workflows/ruby.yml/badge.svg)](https://github.com/srilumpa/fluent-plugin-shodan/actions/workflows/ruby.yml)[![Ruby Gem](https://github.com/srilumpa/fluent-plugin-shodan/actions/workflows/rubygem-push.yml/badge.svg)](https://github.com/srilumpa/fluent-plugin-shodan/actions/workflows/rubygem-push.yml)[![GPR](https://github.com/srilumpa/fluent-plugin-shodan/actions/workflows/gpr-push.yml/badge.svg)](https://github.com/srilumpa/fluent-plugin-shodan/actions/workflows/gpr-push.yml)
+
 The [Shodan](https://www.shodan.io/) plugin offers [Fluentd](https://fluentd.org/) capacities to gather data from shodan and send them to whatever system you want (on the condition Fluentd has an [output plugin](https://docs.fluentd.org/output) fitting your needs).
 
 The Shodan plugin can adress three ways of gathering data
