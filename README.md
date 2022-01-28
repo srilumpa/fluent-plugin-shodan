@@ -15,7 +15,7 @@ The Shodan plugin can adress three ways of gathering data
 
 The outputed "logs" follow the Shodan [Banner specification](https://datapedia.shodan.io/).
 
-A valid API key will be necessary for this plugin to work. The Shodan Search plugin will work with a _Free_ account with limited functionnalities, but the Shodans Stream and the Shodan Alert plugins will need a subscription plan to work.
+A valid API key will be necessary for this plugin to work. The Shodan Search plugin will work with a _Free_ account with limited functionnalities, but the Shodans Stream and the Shodan Alert plugins will need at least a membership to work.
 
 ## Installation
 
@@ -57,7 +57,7 @@ $ bundle
 
 When Fluentd is started with `in_shodan_search`, it will create a Shodan client and passes to it the API key. It will then query the Shodan API to get the account information to check if the API key is valid. If it is not, an error will be logged and the plugin will stop.
 
-Once the client is ready, a timer will be set to query the Shodan API a the interval set up in the configuration. One line of "log" will be generated per element contained in the `matches` array from the query result. An other query will be submitted to gather data fro mthe next page if
+Once the client is ready, a timer will be set to query the Shodan API a the interval set up in the configuration. One line of "log" will be generated per element contained in the `matches` array from the query result. An other query will be submitted to gather data from the next page if
 
 - the amount of read entries is lesser than the total available entries
 - the current read page is not greater than the `max_pages` parameter
