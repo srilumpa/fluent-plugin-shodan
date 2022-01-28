@@ -17,8 +17,6 @@ The outputed "logs" follow the Shodan [Banner specification](https://datapedia.s
 
 A valid API key will be necessary for this plugin to work. The Shodan Search plugin will work with a _Free_ account with limited functionnalities, but the Shodans Stream and the Shodan Alert plugins will need a subscription plan to work.
 
-This plugin relies on the
-
 ## Installation
 
 ### RubyGems
@@ -120,6 +118,10 @@ On a system where fluentd is installed
 2. Build the gem with `gem build fluent-plugin-shodan.gemspec`
 3. Install the built gem with `fluent-gem install fluent-plugin-shodan-<version>.gem`
 4. Follow the [debugging guide from FluentD](https://docs.fluentd.org/plugin-development#debugging-plugins)
+
+## Credits
+
+This plugin heavily relies on the [shodanz](https://github.com/picatz/shodanz) gem by [Kent 'picat' Gruber](https://picatz.github.io/) which makes it really easy to query the Shodan API.
 
 ## Copyright
 
