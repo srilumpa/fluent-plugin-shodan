@@ -11,7 +11,7 @@ The Shodan plugin can adress three ways of gathering data
 
 - by querying the [Search API](https://developer.shodan.io/api)
 - by consuming the [Stream API](https://developer.shodan.io/api/stream) (WIP)
-- or by consuming the [Alert API](https://developer.shodan.io/api/stream) (WIP)
+- or by consuming the [Alert API](https://developer.shodan.io/api/stream)
 
 The outputed "logs" follow the Shodan [Banner specification](https://datapedia.shodan.io/).
 
@@ -99,7 +99,51 @@ WIP
 
 ## Shodan Alert
 
-WIP
+### Example configuration
+
+```
+<source>
+  @type shodan_search
+  interval 15m
+  alert_id GA3FRJ1HJNDPORHV
+  api_key 1234567890AZERTYUIOP
+</source>
+```
+
+### How it works
+
+When Fluentd is started with `in_shodan_alert`, it will create a Shodan client and passes to it the API key. It will then query the Shodan API to get the account information to check if the API key is valid. If it is not, an error will be logged and the plugin will stop.
+
+Once the client is ready, a timer will be set to query the Shodan Streaming API a the interval set up in the configuration. One line of log will be generated for each alert yield by the API.
+
+### Plugin helpers
+
+* [timer](https://docs.fluentd.org/v/1.0/plugin-helper-overview/api-plugin-helper-timer)
+* See also: [Input Plugin Overview](https://docs.fluentd.org/v/1.0/input#overview)
+
+### Configuration
+
+#### api_key (string) (required)
+
+The API key to connect to the Shodan API.
+
+#### interval (time) (optional)
+
+The interval time between running queries.
+
+Default value: `3600`.
+
+#### tag (string) (optional)
+
+The tag to apply to each shodan entries. If none are given, the alert name will be used to tag each associated emitted log.
+
+Default value: `nil`
+
+#### alert_id (string) (optional)
+
+The identifier of the alert to crawl. If none are given, all alerts are imported.
+
+Default value: `nil`
 
 ## Testing
 
