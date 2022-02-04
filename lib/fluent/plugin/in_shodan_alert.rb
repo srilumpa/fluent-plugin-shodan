@@ -40,12 +40,12 @@ module Fluent::Plugin
     private
 
     def run
-      log.debug "Starting polling Shodan alerts", alert_id: @alert_id
+      log.debug "Start polling Shodan alerts", alert_id: @alert_id
 
       if @alert_id.nil?
-        @client.alerts { |alert| process_alert(alert) }
+        @client.streaming_api.alerts { |alert| process_alert(alert) }
       else
-        @client.alert(@alert_id) { |alert| process_alert(alert) }
+        @client.streaming_api.alert(@alert_id) { |alert| process_alert(alert) }
       end
     end
 
