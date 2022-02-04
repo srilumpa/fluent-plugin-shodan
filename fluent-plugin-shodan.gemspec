@@ -21,9 +21,11 @@ Gem::Specification.new do |s|
   s.files = [
     'AUTHORS',
     'VERSION',
+    'lib/fluent/plugin/in_shodan_alert.rb',
     'lib/fluent/plugin/in_shodan_search.rb'
   ]
   s.test_files = [
+    'test/test_in_shodan_alert.rb',
     'test/test_in_shodan_search.rb'
   ]
   s.require_paths = ['lib']
