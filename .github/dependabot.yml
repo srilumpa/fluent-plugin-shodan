@@ -11,3 +11,9 @@ updates:
       interval: "weekly"
     assignees:
       - "srilumpa"
+  - package-ecosystem: "docker"
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "weekly"
+    assignees:
+      - "srilumpa"
