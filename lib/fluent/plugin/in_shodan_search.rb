@@ -7,6 +7,8 @@ module Fluent::Plugin
 
     helpers :timer
 
+    SUPPORTED_FILTERS = ['port', 'country'].sort
+
     desc "The API key to connect to the Shodan API."
     config_param :api_key, :string, secret: true
     desc "The interval time between running queries."
@@ -17,6 +19,13 @@ module Fluent::Plugin
     config_param :query, :string
     desc "The maximum amount of pages to crawl. A 0 or negative value means to crawl all pages."
     config_param :max_pages, :integer, default: 1
+    desc "Search filters configuration."
+    config_section :filter, param_name: 'filters', required: false, multi: true do
+      desc "Name of the filter."
+      config_param :name, :enum, list: (SUPPORTED_FILTERS + SUPPORTED_FILTERS.map {|filter| "-#{filter}"}).map { |filter| filter.to_sym }
+      desc "Value to be given to the filter"
+      config_param :value, :string
+    end
 
     def configure(conf)
       super
@@ -26,6 +35,11 @@ module Fluent::Plugin
         log.info "Shodan client properly registered", client_info: @client.info
       rescue RuntimeError => exception
         raise Fluent::ConfigError.new "Invalid Shodan API key"
+      end
+
+      @search_filters = {}
+      @filters.each do |filter|
+        @search_filters[filter.name] = filter.value
       end
     end
 
@@ -44,16 +58,17 @@ module Fluent::Plugin
     def run
       log.debug "Starting Shodan search", query: @query, max_pages: @max_pages
       es_time = Fluent::EventTime.now
-      current_page = 0
+      opts = @search_filters.merge({page: 0})
       read_entries = 0
       loop do
-        current_page += 1
-        result = @client.host_search(@query, page: current_page)
+        opts[:page] += 1
+        log.trace query: @query, opts: opts
+        result = @client.host_search(@query.dup, **opts)
         result['matches'].each do |rec|
           router.emit(@tag, es_time, rec)
         end
         read_entries += result['matches'].length
-        break if (@max_pages >= 0 && current_page >= @max_pages) || read_entries >= result['total']
+        break if (@max_pages >= 0 && opts[:page] >= @max_pages) || read_entries >= result['total']
       end
       log.debug "Shodan search ending", query: @query, total_read: read_entries
     rescue RuntimeError => re
