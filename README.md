@@ -103,7 +103,7 @@ WIP
 
 ```
 <source>
-  @type shodan_search
+  @type shodan_alert
   interval 15m
   alert_id GA3FRJ1HJNDPORHV
   api_key 1234567890AZERTYUIOP
