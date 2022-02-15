@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fluent-plugin-shodan (0.0.2)
+    fluent-plugin-shodan (0.0.3)
       fluentd (>= 0.12.0, < 2)
       io-console
       shodanz (~> 2.0)
@@ -43,7 +43,7 @@ GEM
       yajl-ruby (~> 1.0)
     http_parser.rb (0.8.0)
     io-console (0.5.11)
-    msgpack (1.4.4)
+    msgpack (1.4.5)
     nio4r (2.5.8)
     power_assert (2.0.1)
     protocol-hpack (1.4.2)
