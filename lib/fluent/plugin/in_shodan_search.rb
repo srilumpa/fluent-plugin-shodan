@@ -89,9 +89,9 @@ module Fluent::Plugin
         read_entries += result['matches'].length
         break if (@max_pages >= 0 && opts[:page] >= @max_pages) || read_entries >= result['total']
       end
-      log.debug "Shodan search ending", query: @query, total_read: read_entries
+      log.debug "Shodan search ending", query: @query, filters: @search_filters, total_read: read_entries
     rescue RuntimeError => re
-      log.error "Unable to execute Shodan query", query: @query, page: current_page, error: re
+      log.error "Unable to execute Shodan query", query: @query, filters: @search_filters, page: current_page, error: re
     rescue => exception
       log.error "Error executing Shodan query", error: exception
     end
