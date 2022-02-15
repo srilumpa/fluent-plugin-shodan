@@ -30,7 +30,7 @@ class ShodanSearchInputTest < Test::Unit::TestCase
         ])
       end
     end
-    test 'is invalid without a query' do
+    test 'is invalid without a query or a filter' do
       assert_raise Fluent::ConfigError do
         create_driver(%[
           api_key #{API_KEY}
@@ -40,6 +40,17 @@ class ShodanSearchInputTest < Test::Unit::TestCase
     test 'query is set correctly' do
       d = create_driver
       assert_equal '8.8.8.8', d.instance.query
+    end
+    test 'is valid with one filter and no query' do
+      assert_nothing_raised do
+        d = create_driver(%[
+          api_key #{API_KEY}
+          <filter>
+            name product
+            value ssh
+          </filter>
+        ])
+      end
     end
   end
 

@@ -33,7 +33,7 @@ module Fluent::Plugin
     desc "The tag to apply to each shodan entries."
     config_param :tag, :string, default: nil
     desc "The Shodan query to execute."
-    config_param :query, :string
+    config_param :query, :string, default: ''
     desc "The maximum amount of pages to crawl. A 0 or negative value means to crawl all pages."
     config_param :max_pages, :integer, default: 1
     desc "Search filters configuration."
@@ -53,6 +53,8 @@ module Fluent::Plugin
       rescue RuntimeError => exception
         raise Fluent::ConfigError.new "Invalid Shodan API key"
       end
+
+      raise Fluent::ConfigError.new("At least a query or one filter should be configured") if @query.empty? and @filters.empty?
 
       @search_filters = {}
       @filters.each do |filter|

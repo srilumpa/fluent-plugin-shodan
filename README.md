@@ -83,15 +83,27 @@ Default value: `3600`.
 
 The tag to apply to each shodan entries.
 
-#### query (string) (required)
+#### query (string) (optional)
 
-The Shodan query to execute.
+The Shodan query to execute. The query can be empty if at least one filter is set.
+
+Default: `nil`
 
 #### max_pages (integer) (optional)
 
 The maximum amount of pages to crawl. A 0 or negative value means to crawl all pages. Note that if you have a free account, querying a page other than the first one will result in a `HTTP 401` response.
 
 Default value: `1`.
+
+#### filter (optional) (multi)
+
+##### name (string) (required)
+
+The name of the filter to be added to the query. Full filters list is available on the [Shodan filter reference page](https://www.shodan.io/search/filters). The filter can be negated by prepending `-` to the filter name (ex: `name -port`).
+
+##### value (string) (required)
+
+The value to be passed to the filter.
 
 ## Shodan Stream
 
