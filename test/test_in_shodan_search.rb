@@ -80,7 +80,7 @@ class ShodanSearchInputTest < Test::Unit::TestCase
       events = d.events
       assert_not_empty(events)
       assert_all(events, "Events are not properly tagged") {|evt| expected_tag == evt[0]}
-      assert_all(events, "Events do not have a '_shodan' key") {|evt| evt[2]['data'].downcase.include?('8.8.8.8')}
+      assert_all(events, "Events do not match query") {|evt| evt[2]['data'].downcase.include?('8.8.8.8')}
       assert_all(events, "Events do not have a '_shodan' key") {|evt| evt[2].has_key?('_shodan')}
     end
 
