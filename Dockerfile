@@ -1,4 +1,4 @@
-FROM ruby:3.1.1-alpine as builder
+FROM ruby:3.1.2-alpine as builder
 
 COPY . /usr/src
 
