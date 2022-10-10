@@ -61,7 +61,7 @@ GEM
       async-http (>= 0.38.1, < 0.57.0)
     sigdump (0.2.4)
     strptime (0.2.5)
-    test-unit (3.5.3)
+    test-unit (3.5.5)
       power_assert
     timers (4.3.3)
     tzinfo (2.0.5)
