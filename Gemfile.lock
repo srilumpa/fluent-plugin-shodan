@@ -42,7 +42,7 @@ GEM
       webrick (>= 1.4.2, < 1.8.0)
       yajl-ruby (~> 1.0)
     http_parser.rb (0.8.0)
-    io-console (0.5.11)
+    io-console (0.6.0)
     msgpack (1.6.0)
     nio4r (2.5.8)
     power_assert (2.0.1)
