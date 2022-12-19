@@ -45,7 +45,7 @@ GEM
     io-console (0.5.11)
     msgpack (1.6.0)
     nio4r (2.5.8)
-    power_assert (2.0.1)
+    power_assert (2.0.2)
     protocol-hpack (1.4.2)
     protocol-http (0.22.5)
     protocol-http1 (0.14.2)
@@ -61,7 +61,7 @@ GEM
       async-http (>= 0.38.1, < 0.57.0)
     sigdump (0.2.4)
     strptime (0.2.5)
-    test-unit (3.5.3)
+    test-unit (3.5.7)
       power_assert
     timers (4.3.3)
     tzinfo (2.0.5)
